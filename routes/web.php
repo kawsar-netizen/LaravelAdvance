@@ -1,6 +1,10 @@
 <?php
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\PaymentGateway\Payment;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +17,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
+    // dd(app());
+    $name = app()->make('getName');
+    $name->setName('Kawsar Khan');
+    echo $name->getName();
+    die();
     return view('welcome');
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/payment',function(){
+return Payment::process();
+});
