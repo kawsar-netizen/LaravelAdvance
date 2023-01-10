@@ -3,12 +3,11 @@
 namespace App\Listeners;
 
 use Auth;
-use Mail;
 use App\Mail\UserMail;
 use App\Events\LoginProcessed;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-
+use Mail;
 
 class SendLoginNotification
 {
@@ -30,6 +29,6 @@ class SendLoginNotification
      */
     public function handle(LoginProcessed $event)
     {
-        \Mail::to(Auth::user()->email)->send(new UserMail($event->login));
+        Mail::to(Auth::user()->email)->send(new UserMail($event->login));
     }
 }
