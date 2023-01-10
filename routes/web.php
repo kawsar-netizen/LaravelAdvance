@@ -20,10 +20,10 @@ use App\PaymentGateway\Payment;
 
 Route::get('/', function () {
     // dd(app());
-    $name = app()->make('getName');
-    $name->setName('Kawsar Khan');
-    echo $name->getName();
-    die();
+    // $name = app()->make('getName');
+    // $name->setName('Kawsar Khan');
+    // echo $name->getName();
+    // die();
     return view('welcome');
 });
 
